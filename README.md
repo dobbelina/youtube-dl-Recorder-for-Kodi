@@ -1,5 +1,6 @@
 # youtube-dl-Recorder-for-Kodi
 I present the youtube-dl Recorder for Kodi.
+<img width="283" alt="youtube-dl" src="https://user-images.githubusercontent.com/46063764/103497326-794f1a00-4e41-11eb-83c3-838f9c263d17.png">
 
 It can download almost anything you throw at it, and the thumbnails as well.
 It communicates with kodi via it's web server, so make sure you enable it here:
