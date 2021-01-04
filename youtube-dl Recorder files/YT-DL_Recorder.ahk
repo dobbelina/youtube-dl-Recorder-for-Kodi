@@ -107,7 +107,7 @@ IniRead, YTupdate, youtube-dl.ini, UpdateUrl, YTupdate
 GuiControlGet, Checked,,YTD
 if (checked == 1 and youtube <> "*.youtube-dl.exe")
 {
-	FileSelectFolder, YtDest, , 3, Choose Output Folder
+	FileSelectFolder, YtDest, , 3, youtube-dl.exe Destination Folder
 if (YtDest = "")
 {
 MsgBox, 48, Attention!, You didn't select a folder.
@@ -228,7 +228,7 @@ Uagent:= "--user-agent " . chr(34) . Uagent0 . chr(34)
 RegExMatch(Incoming, "(?i)(?<=Referer=)(.*?)(?=&|""|$)", Referer0)
 if (Referer0)
 Referer:= "--referer " . chr(34) . Referer0 . chr(34)
-PathFile := chr(34) . outputfolder . "\" . FileName . ".mp4" . chr(34)
+PathFile := chr(34) . outputfolder . "\" . FileName . ".%(ext)s" . chr(34)
 Recorder := chr(34) . youtube . chr(34)
 Clipboard := Link
 Run, %Recorder% %Link% -o %PathFile% %Uagent% %Referer%
