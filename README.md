@@ -31,8 +31,10 @@ A desktop shortcut will be created to start the recorder.
 
 Created in Autohotkey
 
-Download here:
+Download here: [YT-DL_Recorder.v.1.0.zip](https://github.com/dobbelina/youtube-dl-Recorder-for-Kodi/releases/download/v1.0-Windows/YT-DL_Recorder.v.1.0.zip)
 
 This is version 1.0
 
-For those that want to compile it for themselves, here's the source files:
+For those that want to compile it for themselves, here's the source files: [Source Files](https://github.com/dobbelina/youtube-dl-Recorder-for-Kodi)
+
+![GitHub Releases (by Release)](https://img.shields.io/github/downloads/dobbelina/youtube-dl-Recorder-for-Kodi/v1.0-Windows/total)
