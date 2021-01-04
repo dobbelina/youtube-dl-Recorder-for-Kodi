@@ -1,8 +1,8 @@
 # youtube-dl-Recorder-for-Kodi
 
-<p align="center">
+**<p align="center">
 **I present the youtube-dl Recorder for Kodi.**
-</p>
+</p>**
 <p align="center">
 <img width="283" alt="youtube-dl" src="https://user-images.githubusercontent.com/46063764/103497825-02b31c00-4e43-11eb-9571-c8180ef8a2b9.png"></p>
 
@@ -11,7 +11,7 @@ It communicates with kodi via it's web server, so make sure you enable it here:
 System=>Services=>Control=>Allow remote control via HTTP
 
 
-If you don't have youtube-dl installed, it can install it for you as it's **needed.**
+If you don't have youtube-dl installed, it can install it for you as it's needed.
 I also recommend that you download ffmpeg and put in the samme folder as
 youtube-dl.exe, as some media require it.
 If you're into live streams, also download rtmpdump and put in the same folder.
