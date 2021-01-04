@@ -1,4 +1,5 @@
 # youtube-dl-Recorder-for-Kodi++
+
 <p align="center">
 **I present the youtube-dl Recorder for Kodi.**
 </p>
@@ -17,7 +18,7 @@ If you're into live streams, also download rtmpdump and put in the same folder.
 No need to add any path to the system environment variables, as long as the files are
 in the same folder as youtube-dl.exe.
 
-After setup, just press the shortcut key to start a download from playing media, 
+After setup, just press the shortcut key to start a download from playing **media, **
 (must be playing).
 You can start as many concurrent downloads as you wish, if your internet connection
 can handle it.
