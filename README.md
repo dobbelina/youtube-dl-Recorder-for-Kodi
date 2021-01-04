@@ -27,7 +27,10 @@ To close the recorder press F4.
 To update youtube-dl, press Ctrl + F1 
 or delete the  youtube-dl.ini to restart setup and download from there.
 
-A desktop shortcut will be created to start the recorder.
+Created files by the application:
+* A desktop shortcut will be created to start the recorder
+* A youtube-dl.ini file will be created for it's settings in the recorder directory
+* A config file for youtube-dl will be created in %APPDATA%\youtube-dl\config.txt
 
 Created in Autohotkey
 
