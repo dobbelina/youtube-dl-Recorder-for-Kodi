@@ -128,6 +128,8 @@ if (youtube = "")
 	MsgBox, 48, Error, youtube-dl.exe location Empty!
 	return
 }
+FileCreateDir, %A_AppData%\youtube-dl
+FileInstall, config.txt, %A_AppData%\youtube-dl\config.txt
 Reload
 }
 IniRead, Shortcut, youtube-dl.ini, Init, Shortcut
