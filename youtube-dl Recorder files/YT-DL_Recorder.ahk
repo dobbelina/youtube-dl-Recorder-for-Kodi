@@ -178,7 +178,7 @@ Incoming := UrlDecode(text)
 
 ; File Name
 Tags := RegExReplace(Incoming, "(?i)\[COL.*\OR]"  , Replacement := "")
-RegExMatch(Tags, "(?<=label"":"")(.+?)(?=""| ""|$)", FileName0)
+RegExMatch(Tags, "(?<=label"":"")(.+?)(?="",""|$)", FileName0)
 FileName := RegExReplace(FileName0, "[\\\/:*?""<>|]+"  , Replacement := " ")
 
 ;Thumbnail
