@@ -12,7 +12,7 @@ System=>Services=>Control=>Allow remote control via HTTP
 
 
 If you don't have youtube-dl installed, it can install it for you as it's needed.
-I also recommend that you download ffmpeg and put in the samme folder as
+I also recommend that you download ffmpeg and put in the same folder as
 youtube-dl.exe, as some media require it.
 If you're into live streams, also download rtmpdump and put in the same folder.
 No need to add any path to the system environment variables, as long as the files are
