@@ -246,11 +246,19 @@ ExitApp
 ^F1::
 IniRead, YTupdate, youtube-dl.ini, UpdateUrl, YTupdate
 IniRead, youtube, youtube-dl.ini, Init, youtube
+FileGetVersion, Version, %youtube%
+Progress,B2 fs18 c0 zh0  w310 h30 CW90cf8c cbBlack,Old Version: %Version%
+Sleep, 3000
+Progress, off
 SetTimer, uProgress, 150
 totalFileSize := HttpQueryInfo(url, 5)
 UrlDownloadToFile, %YTupdate%, %youtube%
 SetTimer, uProgress, off
 Progress, Off
+FileGetVersion, Version, %youtube%
+Progress,B2 fs18 c0 zh0  w310 h30 CW90cf8c cbBlack,New Version: %Version%
+Sleep, 3000
+Progress, off
 return
 
 uProgress:
