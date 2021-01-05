@@ -58,6 +58,7 @@ if (exename != "youtube-dl.exe")
 MsgBox, 48, Attention!, Wrong file!
 return
 }
+IniWrite, %SelectedFile%, %IniName%, Init, youtube
 return
 
 ButtonGo:
@@ -91,11 +92,10 @@ If (Shortcut = "")
 GuiControlGet, Checked,,YesNoBox
 if (checked == 0)
 IniWrite, No, %IniName%, Init, Miniature
-
-IniWrite, https://yt-dl.org/latest/youtube-dl.exe, %IniName%, UpdateUrl, YTupdate
+else
 IniWrite, Yes, %IniName%, Init, Miniature
 IniWrite, %OutputVar%, %IniName%, Init, outputfolder
-IniWrite, %SelectedFile%, %IniName%, Init, youtube
+IniWrite, https://yt-dl.org/latest/youtube-dl.exe, %IniName%, UpdateUrl, YTupdate
 IniWrite, %IPAddress%, %IniName%, Init, IPAddress
 IniWrite, %Port%, %IniName%, Init, Port
 IniWrite, %Shortcut%, %IniName%, Init, Shortcut
@@ -123,10 +123,11 @@ IniWrite, %save%, %IniName%, Init, youtube
 IniRead, youtube, youtube-dl.ini, Init, youtube
 Sleep, 200
 }
-if (youtube = "")
+SplitPath, youtube, exename
+if (exename != "youtube-dl.exe")
 {
-	MsgBox, 48, Error, youtube-dl.exe location Empty!
-	return
+MsgBox, 48, Attention!, youtube-dl.exe location Empty!
+return
 }
 FileCreateDir, %A_AppData%\youtube-dl
 FileInstall, config.txt, %A_AppData%\youtube-dl\config.txt
@@ -232,15 +233,11 @@ PathFile := chr(34) . outputfolder . "\" . FileName . ".%(ext)s" . chr(34)
 Recorder := chr(34) . youtube . chr(34)
 Clipboard := Link
 Run, %Recorder% %Link% -o %PathFile% %Uagent% %Referer%
-Sleep, 7000
-WinActivate ,  ahk_exe kodi.exe
-
 
 return
 
-
-
 GuiClose:
+FileDelete, %IniName%
 ExitApp
 
 ^F1::
