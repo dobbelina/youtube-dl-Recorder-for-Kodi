@@ -105,7 +105,7 @@ FileCreateShortcut, %A_ScriptDir%\YT-DL_Recorder.exe, %A_Desktop%\YT-DL_Recorder
 IniRead, youtube, youtube-dl.ini, Init, youtube
 IniRead, YTupdate, youtube-dl.ini, UpdateUrl, YTupdate
 GuiControlGet, Checked,,YTD
-if (checked == 1 and youtube <> "*.youtube-dl.exe")
+if (checked == 1)
 {
 	FileSelectFolder, YtDest, , 3, youtube-dl.exe Destination Folder
 if (YtDest = "")
