@@ -8,7 +8,7 @@ I present the youtube-dl Recorder for Kodi.
 
 It can download almost anything you throw at it, and the thumbnails as well.
 It communicates with kodi via it's web server, so make sure you enable it here:
-System=>Services=>Control=>Allow remote control via HTTP
+**System=>Services=>Control=>Allow remote control via HTTP**
 
 
 If you don't have youtube-dl installed, it can install it for you as it's needed.
@@ -18,13 +18,13 @@ If you're into live streams, also download rtmpdump and put in the same folder.
 No need to add any path to the system environment variables, as long as the files are
 in the same folder as youtube-dl.exe.
 
-After setup, just press the shortcut key to start a download from playing media, 
+After setup, just press the **shortcut key to start** a download from playing media, 
 (must be playing).
 You can start as many concurrent downloads as you wish, if your internet connection
 can handle it.
 
-To close the recorder press F4.
-To update youtube-dl, press Ctrl + F1 
+To close the recorder press **F4**.
+To update youtube-dl, press **Ctrl + F1** 
 or delete the  youtube-dl.ini to restart setup and download from there.
 
 Created files by the application:
