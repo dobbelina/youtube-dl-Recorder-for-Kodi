@@ -259,21 +259,11 @@ Progress, off
 return
 
 uProgress:
-   FileGetSize, fs, %youtube% ,K
-   a := Floor(fs/totalFileSize * 100*1024)
-   b := Floor(fs/totalFileSize * 10000*1024)/100
-   SetFormat, float, 0.2
-   b += 0
-Progress,%a% ,      downloaded: %fs% Kb. ,,Download
+Counter(youtube)
 return
 
 uProgress2:
-   FileGetSize, fs, %save% ,K
-   a := Floor(fs/totalFileSize * 100*1024)
-   b := Floor(fs/totalFileSize * 10000*1024)/100
-   SetFormat, float, 0.2
-   b += 0
-Progress,%a% ,      downloaded: %fs% Kb. ,,Download
+Counter(save)
 return
 
 F4::

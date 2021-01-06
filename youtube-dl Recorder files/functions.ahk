@@ -6,17 +6,6 @@ UrlDecode(str) {
  Return, str
 }
 
-b64Encode(string)
-{
-    VarSetCapacity(bin, StrPut(string, "UTF-8")) && len := StrPut(string, &bin, "UTF-8") - 1
-    if !(DllCall("crypt32\CryptBinaryToString", "ptr", &bin, "uint", len, "uint", 0x1, "ptr", 0, "uint*", size))
-        throw Exception("CryptBinaryToString failed", -1)
-    VarSetCapacity(buf, size << 1, 0)
-    if !(DllCall("crypt32\CryptBinaryToString", "ptr", &bin, "uint", len, "uint", 0x1, "ptr", &buf, "uint*", size))
-        throw Exception("CryptBinaryToString failed", -1)
-    return StrGet(&buf)
-}
-
 download_to_file(u,s){
 	static r:=false,request:=comobjcreate("WinHttp.WinHttpRequest.5.1")
 	if(!r||request.option(1)!=u)
@@ -34,6 +23,27 @@ download_to_file(u,s){
 	objrelease(p)
 	f.close()
 	return request.responsetext
+}
+
+b64Encode(string)
+{
+    VarSetCapacity(bin, StrPut(string, "UTF-8")) && len := StrPut(string, &bin, "UTF-8") - 1
+    if !(DllCall("crypt32\CryptBinaryToString", "ptr", &bin, "uint", len, "uint", 0x1, "ptr", 0, "uint*", size))
+        throw Exception("CryptBinaryToString failed", -1)
+    VarSetCapacity(buf, size << 1, 0)
+    if !(DllCall("crypt32\CryptBinaryToString", "ptr", &bin, "uint", len, "uint", 0x1, "ptr", &buf, "uint*", size))
+        throw Exception("CryptBinaryToString failed", -1)
+    return StrGet(&buf)
+}
+
+Counter(elapsed){
+   FileGetSize, fs, %elapsed% ,K
+   a := Floor(fs/totalFileSize * 100*1024)
+   b := Floor(fs/totalFileSize * 10000*1024)/100
+   SetFormat, float, 0.2
+   b += 0
+Progress,%a% ,      downloaded: %fs% Kb. ,,Download
+return
 }
 
 HttpQueryInfo(URL, QueryInfoFlag=21, Proxy="", ProxyBypass="") {
