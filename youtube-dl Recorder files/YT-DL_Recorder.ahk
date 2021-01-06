@@ -115,7 +115,6 @@ return
 }
 save = %YtDest%\youtube-dl.exe
 SetTimer, uProgress2, 150
-totalFileSize := HttpQueryInfo(url, 5)
 UrlDownloadToFile, %YTupdate%, %save%
 SetTimer, uProgress2, off
 Progress, Off
@@ -248,7 +247,6 @@ Progress,B2 fs18 c0 zh0  w310 h30 CW90cf8c cbBlack,Old Version: %Version%
 Sleep, 3000
 Progress, off
 SetTimer, uProgress, 150
-totalFileSize := HttpQueryInfo(url, 5)
 UrlDownloadToFile, %YTupdate%, %youtube%
 SetTimer, uProgress, off
 Progress, Off
