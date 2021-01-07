@@ -25,6 +25,26 @@ download_to_file(u,s){
 	return request.responsetext
 }
 
+Fader(){
+ Loop, 7
+{
+ Iterations +=36.42
+    WinSet, Transparent, %Iterations%, YT-DL_Recorder-Notification
+    Sleep, 60
+}
+WinSet, TransColor, Off, YT-DL_Recorder-Notification
+Sleep, 1215
+ Loop, 7
+{
+ Iterations -= 36.42
+    WinSet, Transparent, %Iterations%, YT-DL_Recorder-Notification
+    Sleep, 30
+}
+Progress, off
+WinSet, TransColor, Off, YT-DL_Recorder-Notification
+return
+}
+
 b64Encode(string)
 {
     VarSetCapacity(bin, StrPut(string, "UTF-8")) && len := StrPut(string, &bin, "UTF-8") - 1

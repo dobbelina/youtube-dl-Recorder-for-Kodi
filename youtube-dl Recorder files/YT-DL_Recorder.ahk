@@ -133,9 +133,8 @@ FileInstall, config.txt, %A_AppData%\youtube-dl\config.txt
 Reload
 }
 IniRead, Shortcut, youtube-dl.ini, Init, Shortcut
-Progress,B2 fs18 c0 zh0  w320 h30 CW4e8af2 CTFFFFFF cbBlack,Starting youtube-dl Recorder
-Sleep, 1500
-Progress, off
+Progress,B2 fs18 c0 zh0  w320 h30 CW4e8af2 CTFFFFFF cbBlack,Starting youtube-dl Recorder,, YT-DL_Recorder-Notification
+Fader()
 Hotkey,^%Shortcut%,Dobbelina
 Return
 
@@ -165,9 +164,8 @@ try {WinHttp.Send(Body)
 }
 catch e
 {
-Progress,B2 fs18 c0 zh0  w290 h30 CWcf9797 cbBlack,No Connection To Server
-Sleep, 1500
-Progress, off
+Progress,B2 fs18 c0 zh0  w290 h30 CWcf9797 cbBlack,No Connection To Server,, YT-DL_Recorder-Notification
+Fader()
 }
 arr := WinHttp.responseBody
 pData := NumGet(ComObjValue(arr) + 8 + A_PtrSize)
@@ -192,20 +190,19 @@ if (Miniature = "Yes")
 {
 if (ext = "")
 {
-Progress,B2 fs18 c0 zh0  w270 h30 CWcf9797 cbBlack,No Thumbnail Avaliable
-Sleep, 1500
-Progress, off
+Progress,B2 fs18 c0 zh0  w270 h30 CWcf9797 cbBlack,No Thumbnail Avaliable,, YT-DL_Recorder-Notification
+Fader()
+Goto, MoveOn
 }
 if (ext = "tbn")
 {
 FileCopy, %Thumbnail%, %outputfolder%\%FileName%.jpg , 1
-ext =
+Goto, MoveOn
 }
-else if (ext != "")
 download_to_file(Thumbnail, outputfolder . "\" . FileName . "." . ext )
 }
 ;Link
-
+MoveOn:
 Link0 := RegExReplace(Incoming, "&mode|Referer=htt|ge://ht|ge=ht"  , Replacement := " ")
 RegExMatch(Link0, "(http.|rtmp)(.+?)(?=""|[|]|\s|$)", Link)
 RegExMatch(Incoming, "(?<=youtube\/play\/\?video_id=)(.+?)(?="",""|$)", Link2)
@@ -215,9 +212,8 @@ Link := Link2
 if (Link = "")
 {
 FileDelete, %outputfolder%\%FileName%.%ext%
-Progress,B2 fs18 c0 zh0  w200 h30 CWcf9797 cbBlack,No Link Avaliable
-Sleep, 1500
-Progress, off
+Progress,B2 fs18 c0 zh0  w200 h30 CWcf9797 cbBlack,No Link Avaliable,, YT-DL_Recorder-Notification
+Fader()
 return
 }
 Link:= chr(34) . Link . chr(34)
@@ -228,10 +224,15 @@ Uagent:= "--user-agent " . chr(34) . Uagent0 . chr(34)
 RegExMatch(Incoming, "(?i)(?<=Referer=)(.*?)(?=&|""|$)", Referer0)
 if (Referer0)
 Referer:= "--referer " . chr(34) . Referer0 . chr(34)
+
+RegExMatch(Incoming, "(?i)(?<=Cookie=)(.*?)(?=&|""|$)", Cookie0)
+if (Cookie0)
+Cookie:= "--add-header " . chr(34) . "Cookie:" . Cookie0 . chr(34)
+
 PathFile := chr(34) . outputfolder . "\" . FileName . ".%(ext)s" . chr(34)
 Recorder := chr(34) . youtube . chr(34)
 Clipboard := Link
-Run, %Recorder% %Link% -o %PathFile% %Uagent% %Referer%
+Run, %Recorder% %Link% -o %PathFile% %Uagent% %Referer% %Cookie%
 
 return
 
@@ -265,9 +266,8 @@ Counter(save)
 return
 
 F4::
-Progress,B2 fs18 c0 zh0  w320 h30 CWcf9797 cbBlack,Closing youtube-dl Recorder
-Sleep, 1500
-Progress, off
+Progress,B2 fs18 c0 zh0  w320 h30 CWcf9797 cbBlack,Closing youtube-dl Recorder,, YT-DL_Recorder-Notification
+Fader()
 ExitApp
 
 
