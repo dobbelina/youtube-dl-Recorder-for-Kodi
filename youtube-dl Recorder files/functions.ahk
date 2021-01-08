@@ -26,6 +26,7 @@ download_to_file(u,s){
 }
 
 Fader(){
+Iterations =
  Loop, 7
 {
  Iterations +=36.42

@@ -6,9 +6,17 @@
 
 #NoEnv
 #SingleInstance force
+#Persistent
 SetWorkingDir %A_ScriptDir%
 #Include functions.ahk
 IniName = youtube-dl.ini
+FilePath = %A_AppData%\youtube-dl\config.txt
+xval:=A_ScreenWidth * 0.75
+yval:=A_ScreenHeight * 0.02
+
+FileRead, Console, %FilePath%
+If InStr(Console, "--console-title")
+Console := "Yes"
 
 if !FileExist(IniName)
 {
@@ -128,8 +136,10 @@ if (exename != "youtube-dl.exe")
 MsgBox, 48, Attention!, youtube-dl.exe location Empty!
 return
 }
+FileInstall, YT-Instructions.txt, YT-Instructions.txt
 FileCreateDir, %A_AppData%\youtube-dl
-FileInstall, config.txt, %A_AppData%\youtube-dl\config.txt
+FileInstall, config.txt, %FilePath%
+Run, YT-Instructions.txt
 Reload
 }
 IniRead, Shortcut, youtube-dl.ini, Init, Shortcut
@@ -149,7 +159,6 @@ IniRead, Miniature, youtube-dl.ini, Init, Miniature
 json_send := "{""jsonrpc"": ""2.0"", ""method"": ""Player.GetItem"", ""params"": { ""properties"": [""file"", ""thumbnail""], ""playerid"": 1 }, ""id"": ""VideoGetItem""}"
 
 OnError("LogError")
-cause := error
 
 LogError(exception) {
 return true
@@ -188,18 +197,18 @@ Sleep, 200
 
 if (Miniature = "Yes")
 {
-if (ext = "")
-{
-Progress,B2 fs18 c0 zh0  w270 h30 CWcf9797 cbBlack,No Thumbnail Avaliable,, YT-DL_Recorder-Notification
-Fader()
-Goto, MoveOn
-}
 if (ext = "tbn")
 {
 FileCopy, %Thumbnail%, %outputfolder%\%FileName%.jpg , 1
 Goto, MoveOn
 }
-download_to_file(Thumbnail, outputfolder . "\" . FileName . "." . ext )
+try {download_to_file(Thumbnail, outputfolder . "\" . FileName . "." . ext )
+}
+catch e
+{
+Progress,B2 fs18 c0 zh0  w270 h30 CWcf9797 cbBlack,No Thumbnail Avaliable,, YT-DL_Recorder-Notification
+Fader()
+}
 }
 ;Link
 MoveOn:
@@ -232,8 +241,17 @@ Cookie:= "--add-header " . chr(34) . "Cookie:" . Cookie0 . chr(34)
 PathFile := chr(34) . outputfolder . "\" . FileName . ".%(ext)s" . chr(34)
 Recorder := chr(34) . youtube . chr(34)
 Clipboard := Link
-Run, %Recorder% %Link% -o %PathFile% %Uagent% %Referer% %Cookie%
 
+if (Console != "Yes")
+Run, %Recorder% %Link% -o %PathFile% %Uagent% %Referer% %Cookie%
+else
+{
+SetTimer, uProgress3, 150
+Progress,  M c0 zh0 x%xval% y%yval% , Text text, Downloading..., youtube-dl
+RunWait, %Recorder% %Link% -o %PathFile% %Uagent% %Referer% %Cookie%, , Min
+SetTimer, uProgress3, off
+Progress, off
+}
 return
 
 GuiClose:
@@ -265,7 +283,15 @@ uProgress2:
 Counter(save)
 return
 
+uProgress3:
+WinGetTitle, OutputVar , ahk_exe youtube-dl.exe
+Hi := SubStr(OutputVar, 13)
+Progress , ,   %Hi%
+return
+
 F4::
+SetTimer, uProgress3, off
+Progress, Off
 Progress,B2 fs18 c0 zh0  w320 h30 CWcf9797 cbBlack,Closing youtube-dl Recorder,, YT-DL_Recorder-Notification
 Fader()
 ExitApp
