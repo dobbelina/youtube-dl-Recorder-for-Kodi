@@ -208,6 +208,12 @@ catch e
 {
 Progress,B2 fs18 c0 zh0  w270 h30 CWcf9797 cbBlack,No Thumbnail Avaliable,, YT-DL_Recorder-Notification
 Fader()
+Goto, MoveOn
+}
+If !FileExist(outputfolder . "\" . FileName . "." . ext)
+{
+Progress,B2 fs18 c0 zh0  w270 h30 CWcf9797 cbBlack,No Thumbnail Avaliable,, YT-DL_Recorder-Notification
+Fader()
 }
 }
 ;Link
@@ -220,7 +226,6 @@ Link := Link2
 
 if (Link = "")
 {
-FileDelete, %outputfolder%\%FileName%.%ext%
 Progress,B2 fs18 c0 zh0  w200 h30 CWcf9797 cbBlack,No Link Avaliable,, YT-DL_Recorder-Notification
 Fader()
 return
@@ -238,7 +243,7 @@ RegExMatch(Incoming, "(?i)(?<=Cookie=)(.*?)(?=&|""|$)", Cookie0)
 if (Cookie0)
 Cookie:= "--add-header " . chr(34) . "Cookie:" . Cookie0 . chr(34)
 
-PathFile := chr(34) . outputfolder . "\" . FileName . ".%(ext)s" . chr(34)
+PathFile := chr(34) . outputfolder . "\" . FileName . ".mp4" . chr(34)
 Recorder := chr(34) . youtube . chr(34)
 Clipboard := Link
 
