@@ -32,6 +32,7 @@ Created files by the application:
 * A desktop shortcut will be created to start the recorder
 * A youtube-dl.ini file will be created for it's settings in the recorder directory
 * A config file for youtube-dl will be created in %APPDATA%\youtube-dl\config.txt
+* YT-Instructions.txt
 
 Created in Autohotkey
 
