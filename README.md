@@ -6,7 +6,8 @@ I present the youtube-dl Recorder for Kodi.
 <p align="center">
 <img width="283" alt="youtube-dl" src="https://user-images.githubusercontent.com/46063764/103497825-02b31c00-4e43-11eb-9571-c8180ef8a2b9.png"></p>
 
-It can download almost anything you throw at it, from any addon and the thumbnails as well.
+It can download almost anything you throw at it, **from any addon** 
+and the thumbnails as well.
 It communicates with kodi via it's web server, so make sure you enable it here:
 
 **System=>Services=>Control=>Allow remote control via HTTP**
