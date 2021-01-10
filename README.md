@@ -25,8 +25,8 @@ After setup, just press the **shortcut key** to start a download from playing me
 You can start as many concurrent downloads as you wish, if your internet connection
 can handle it.
 
-To close the recorder press **F4**.
-To update youtube-dl, press **Ctrl + F1** 
+To close the recorder press **F4**,
+To update youtube-dl press **Ctrl + F1** 
 or delete the  youtube-dl.ini to restart setup and download from there.
 
 Created files by the application:
