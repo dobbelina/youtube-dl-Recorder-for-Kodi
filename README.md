@@ -34,6 +34,7 @@ Created files by the application:
 * A youtube-dl.ini file will be created for it's settings in the recorder directory
 * A config file for youtube-dl will be created in the recorder directory named config.txt
 * YT-Instructions.txt
+
 No registry entries
 
 Created in Autohotkey
