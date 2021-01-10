@@ -10,7 +10,7 @@
 SetWorkingDir %A_ScriptDir%
 #Include functions.ahk
 IniName = youtube-dl.ini
-FilePath = %A_AppData%\youtube-dl\config.txt
+FilePath = %A_ScriptDir%\config.txt
 xval:=A_ScreenWidth * 0.75
 yval:=A_ScreenHeight * 0.02
 
@@ -137,7 +137,6 @@ MsgBox, 48, Attention!, youtube-dl.exe location Empty!
 return
 }
 FileInstall, YT-Instructions.txt, YT-Instructions.txt
-FileCreateDir, %A_AppData%\youtube-dl
 FileInstall, config.txt, %FilePath%
 Run, YT-Instructions.txt
 Reload
@@ -248,12 +247,12 @@ Recorder := chr(34) . youtube . chr(34)
 Clipboard := Link
 
 if (Console != "Yes")
-Run, %Recorder% %Link% -o %PathFile% %Uagent% %Referer% %Cookie%
+Run, %Recorder% %Link% --config-location %FilePath% -o %PathFile% %Uagent% %Referer% %Cookie%
 else
 {
 SetTimer, uProgress3, 150
 Progress,  M c0 zh0 x%xval% y%yval% , Text text, Downloading..., youtube-dl
-RunWait, %Recorder% %Link% -o %PathFile% %Uagent% %Referer% %Cookie%, , Min
+RunWait, %Recorder% %Link% --config-location %FilePath% -o %PathFile% %Uagent% %Referer% %Cookie%, , Min
 SetTimer, uProgress3, off
 Progress, off
 }
@@ -300,6 +299,3 @@ Progress, Off
 Progress,B2 fs18 c0 zh0  w320 h30 CWcf9797 cbBlack,Closing youtube-dl Recorder,, YT-DL_Recorder-Notification
 Fader()
 ExitApp
-
-
-
