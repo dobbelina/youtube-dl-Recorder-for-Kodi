@@ -32,12 +32,12 @@ or delete the  youtube-dl.ini to restart setup and download from there.
 Created files by the application:
 * A desktop shortcut will be created to start the recorder
 * A youtube-dl.ini file will be created for it's settings in the recorder directory
-* A config file for youtube-dl will be created in %APPDATA%\youtube-dl\config.txt
+* A config file for youtube-dl will be created in the recorder directory named config.txt
 * YT-Instructions.txt
 
 Created in Autohotkey
 
-*Updated 2021-01-09*
+*Updated 2021-01-10*
 
 Download here: [YT-DL_Recorder.v.1.0.zip](https://github.com/dobbelina/youtube-dl-Recorder-for-Kodi/releases/download/v1.0-Windows/YT-DL_Recorder.v.1.0.zip)
 
