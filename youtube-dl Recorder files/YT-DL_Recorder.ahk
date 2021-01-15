@@ -13,6 +13,7 @@ IniName = youtube-dl.ini
 FilePath = %A_ScriptDir%\config.txt
 xval:=A_ScreenWidth * 0.75
 yval:=A_ScreenHeight * 0.02
+Body := "{""jsonrpc"": ""2.0"", ""method"": ""Player.GetItem"", ""params"": { ""properties"": [""file"", ""thumbnail""], ""playerid"": 1 }, ""id"": ""VideoGetItem""}"
 
 FileRead, Console, %FilePath%
 If InStr(Console, "--console-title")
@@ -155,8 +156,6 @@ IniRead, Port, youtube-dl.ini, Init, Port
 IniRead, Key, youtube-dl.ini, Init, Key
 IniRead, Miniature, youtube-dl.ini, Init, Miniature
 
-json_send := "{""jsonrpc"": ""2.0"", ""method"": ""Player.GetItem"", ""params"": { ""properties"": [""file"", ""thumbnail""], ""playerid"": 1 }, ""id"": ""VideoGetItem""}"
-
 OnError("LogError")
 
 LogError(exception) {
@@ -167,7 +166,6 @@ WinHttp := ComObjCreate("WinHttp.WinHttpRequest.5.1")
 WinHttp.Open("POST", "http://" . IPAddress . ":" . Port . "/jsonrpc", False)
 WinHttp.SetRequestHeader("Content-Type", "application/json")
 WinHttp.SetRequestHeader("Authorization", "Basic " Key)
-Body := json_send
 try {WinHttp.Send(Body)
 }
 catch e
@@ -263,9 +261,28 @@ FileDelete, %IniName%
 ExitApp
 
 ^F1::
+WebObj := ComObjCreate("WinHttp.WinHttpRequest.5.1")
+WebObj.Open("GET", "https://github.com/ytdl-org/youtube-dl/releases")
+try {WebObj.Send()
+}
+catch e
+{
+}
+HtmlText := WebObj.ResponseText
+RegExMatch(HtmlText, "(?i)(?<=youtube-dl\/tree\/)(.*?)(?=""|$)", LateVer)
+LateVer := StrReplace(LateVer, ".0" , ".")
 IniRead, YTupdate, youtube-dl.ini, UpdateUrl, YTupdate
 IniRead, youtube, youtube-dl.ini, Init, youtube
 FileGetVersion, Version, %youtube%
+Length := StrLen(Version) -2
+Version2 := SubStr(Version, 1, Length)
+if (LateVer = Version2)
+{
+Progress,B2 fs18 c0 zh0  w420 h30 CW90cf8c cbBlack,You Have Latest Version: %Version%
+Sleep, 3000
+Progress, off
+return
+}
 Progress,B2 fs18 c0 zh0  w310 h30 CW90cf8c cbBlack,Old Version: %Version%
 Sleep, 3000
 Progress, off
