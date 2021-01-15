@@ -44,7 +44,7 @@ Created in Autohotkey
 Download here: [YT-DL_Recorder.v.1.0.zip](https://github.com/dobbelina/youtube-dl-Recorder-for-Kodi/releases/download/v1.0-Windows/YT-DL_Recorder.v.1.0.zip)
 
 **SHA1:
-1bf14c3e5052802ad8a53f9f98cedfba7189dbe9**
+5219e359389d5be56c86814d3c693188f7df99ce**
 
 This is version 1.0
 
