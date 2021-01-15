@@ -48,6 +48,5 @@ Download here: [YT-DL_Recorder.v.1.0.zip](https://github.com/dobbelina/youtube-d
 
 This is version 1.0
 
-For those that want to compile it for themselves, here's the source files: [Source Files](https://github.com/dobbelina/youtube-dl-Recorder-for-Kodi)
 
 ![GitHub Releases (by Release)](https://img.shields.io/github/downloads/dobbelina/youtube-dl-Recorder-for-Kodi/v1.0-Windows/total)
