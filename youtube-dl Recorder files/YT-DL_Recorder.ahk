@@ -278,7 +278,7 @@ Length := StrLen(Version) -2
 Version2 := SubStr(Version, 1, Length)
 if (LateVer = Version2)
 {
-Progress,B2 fs18 c0 zh0  w420 h30 CW90cf8c cbBlack,You Have Latest Version: %Version%
+Progress,B2 fs18 c0 zh0  w440 h30 CW90cf8c cbBlack,You Have Latest Version: %Version%
 Sleep, 3000
 Progress, off
 return
