@@ -1,9 +1,9 @@
 UrlDecode(str) {
-    Loop
- If RegExMatch(str, "i)(?<=%)[\da-f]{1,2}", hex)
-    StringReplace, str, str, `%%hex%, % Chr("0x" . hex), All
-    Else Break
- Return, str
+   Loop
+   If RegExMatch(str, "i)(?<=%)[\da-f]{1,2}", hex)
+   str := StrReplace(str, "%" . hex, Chr("0x" . hex))
+   Else Break
+   Return, str
 }
 
 download_to_file(u,s){
