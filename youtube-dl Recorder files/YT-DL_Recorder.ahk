@@ -227,21 +227,21 @@ Progress,B2 fs18 c0 zh0  w200 h30 CWcf9797 cbBlack,No Link Avaliable,, YT-DL_Rec
 Fader()
 return
 }
-Link:= chr(34) . Link . chr(34)
+Link:= Chr(34) . Link . Chr(34)
 RegExMatch(Incoming, "(?i)(?<=user-agent=)(.*?)(?=&|""|$)", Uagent0)
 if (Uagent0)
-Uagent:= "--user-agent " . chr(34) . Uagent0 . chr(34)
+Uagent:= "--user-agent " . Chr(34) . Uagent0 . Chr(34)
 
 RegExMatch(Incoming, "(?i)(?<=Referer=)(.*?)(?=&|""|$)", Referer0)
 if (Referer0)
-Referer:= "--referer " . chr(34) . Referer0 . chr(34)
+Referer:= "--referer " . Chr(34) . Referer0 . Chr(34)
 
 RegExMatch(Incoming, "(?i)(?<=Cookie=)(.*?)(?=&|""|$)", Cookie0)
 if (Cookie0)
-Cookie:= "--add-header " . chr(34) . "Cookie:" . Cookie0 . chr(34)
+Cookie:= "--add-header " . Chr(34) . "Cookie:" . Cookie0 . Chr(34)
 
-PathFile := chr(34) . outputfolder . "\" . FileName . ".mp4" . chr(34)
-Recorder := chr(34) . youtube . chr(34)
+PathFile := Chr(34) . outputfolder . "\" . FileName . ".mp4" . Chr(34)
+Recorder := Chr(34) . youtube . Chr(34)
 Clipboard := Link
 
 if (Console != "Yes")
@@ -269,7 +269,7 @@ catch e
 {
 }
 HtmlText := WebObj.ResponseText
-RegExMatch(HtmlText, "(?i)(?<=youtube-dl\/tree\/)(.*?)(?=""|$)", LateVer)
+RegExMatch(HtmlText, "(?i)(?<=youtube-dl\/tree\/)\d{4}.\d{2}.\d{2}", LateVer)
 LateVer := StrReplace(LateVer, ".0" , ".")
 IniRead, YTupdate, youtube-dl.ini, UpdateUrl, YTupdate
 IniRead, youtube, youtube-dl.ini, Init, youtube
