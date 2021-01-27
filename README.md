@@ -39,12 +39,12 @@ No registry entries
 
 Created in Autohotkey
 
-*Updated 2021-01-15*
+*Updated 2021-01-27 check version fix*
 
 Download here: [YT-DL_Recorder.v.1.0.zip](https://github.com/dobbelina/youtube-dl-Recorder-for-Kodi/releases/download/v1.0-Windows/YT-DL_Recorder.v.1.0.zip)
 
 **SHA1:
-5219e359389d5be56c86814d3c693188f7df99ce**
+9ed9ed27493376bce99c1b0637a36e178c29e29f**
 
 This is version 1.0
 
